@@ -10,11 +10,22 @@ import androidx.preference.SwitchPreferenceCompat
 class NotificationsFragment : PreferenceFragmentCompat() {
 
     companion object {
-        fun newInstance() = NotificationsFragment()
+        private const val ARG_MESSAGE = "message"
+
+        fun newInstance(message: String? = null) = NotificationsFragment().apply {
+            arguments = Bundle().apply {
+                message?.let { putString(ARG_MESSAGE, it) }
+            }
+        }
     }
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.pref_screen_notifications, rootKey)
+
+        // Display welcome message if provided
+        arguments?.getString(ARG_MESSAGE)?.let { message ->
+            Toast.makeText(requireContext(), message, Toast.LENGTH_LONG).show()
+        }
 
         // Set up listeners for notification preferences
         setupNotificationPreferences()
