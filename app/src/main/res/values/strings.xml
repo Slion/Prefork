@@ -1,3 +1,45 @@
 <resources>
     <string name="app_name">Preference Demo</string>
+
+    <!-- Theme arrays -->
+    <string-array name="theme_entries">
+        <item>Light</item>
+        <item>Dark</item>
+        <item>System default</item>
+    </string-array>
+    <string-array name="theme_values">
+        <item>light</item>
+        <item>dark</item>
+        <item>system</item>
+    </string-array>
+
+    <!-- Notification ringtone arrays -->
+    <string-array name="notification_ringtone_entries">
+        <item>Default</item>
+        <item>Chime</item>
+        <item>Bell</item>
+        <item>Ding</item>
+        <item>Silent</item>
+    </string-array>
+    <string-array name="notification_ringtone_values">
+        <item>default</item>
+        <item>chime</item>
+        <item>bell</item>
+        <item>ding</item>
+        <item>silent</item>
+    </string-array>
+
+    <!-- Image quality arrays -->
+    <string-array name="image_quality_entries">
+        <item>Low</item>
+        <item>Medium</item>
+        <item>High</item>
+        <item>Original</item>
+    </string-array>
+    <string-array name="image_quality_values">
+        <item>low</item>
+        <item>medium</item>
+        <item>high</item>
+        <item>original</item>
+    </string-array>
 </resources>

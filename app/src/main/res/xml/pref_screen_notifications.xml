@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory android:title="Notifications">
+        <SwitchPreferenceCompat
+            android:key="push_notifications"
+            android:title="Push notifications"
+            android:summary="Receive push notifications"
+            android:defaultValue="true" />
+
+        <SwitchPreferenceCompat
+            android:key="notification_sound"
+            android:title="Sound"
+            android:summary="Play sound for notifications"
+            android:defaultValue="true"
+            android:dependency="push_notifications" />
+
+        <SwitchPreferenceCompat
+            android:key="notification_vibrate"
+            android:title="Vibrate"
+            android:summary="Vibrate on notifications"
+            android:defaultValue="true"
+            android:dependency="push_notifications" />
+
+        <ListPreference
+            android:key="notification_ringtone"
+            android:title="Ringtone"
+            android:entries="@array/notification_ringtone_entries"
+            android:entryValues="@array/notification_ringtone_values"
+            android:defaultValue="default"
+            android:summary="Select a ringtone"
+            android:dependency="push_notifications" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Do Not Disturb">
+        <SwitchPreferenceCompat
+            android:key="dnd_enabled"
+            android:title="Enable Do Not Disturb"
+            android:summary="Silence notifications during specified hours"
+            android:defaultValue="false" />
+
+        <EditTextPreference
+            android:key="dnd_start_time"
+            android:title="Start time"
+            android:summary="22:00"
+            android:dialogTitle="Enter start time (HH:MM)"
+            android:dependency="dnd_enabled" />
+
+        <EditTextPreference
+            android:key="dnd_end_time"
+            android:title="End time"
+            android:summary="07:00"
+            android:dialogTitle="Enter end time (HH:MM)"
+            android:dependency="dnd_enabled" />
+    </PreferenceCategory>
+
+</PreferenceScreen>
+

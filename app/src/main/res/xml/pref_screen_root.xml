@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory android:title="General">
+        <SwitchPreferenceCompat
+            android:key="enable_feature"
+            android:title="Enable feature"
+            android:summary="Toggle a demo feature"
+            android:defaultValue="true" />
+
+        <Preference
+            android:key="notifications"
+            android:title="Notifications"
+            android:summary="Notification settings"
+            android:icon="@android:drawable/ic_menu_info_details" />
+
+        <Preference
+            android:key="advanced"
+            android:title="Advanced"
+            android:summary="Advanced settings and tools"
+            android:icon="@android:drawable/ic_menu_preferences" />
+
+        <ListPreference
+            android:key="theme"
+            android:title="Theme"
+            android:summary="Select app theme"
+            android:entries="@array/theme_entries"
+            android:entryValues="@array/theme_values"
+            android:defaultValue="system" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Account">
+        <EditTextPreference
+            android:key="username"
+            android:title="Username"
+            android:summary="Enter your username"
+            android:dialogTitle="Enter username" />
+
+        <EditTextPreference
+            android:key="email"
+            android:title="Email"
+            android:summary="Enter your email address"
+            android:dialogTitle="Enter email"
+            android:inputType="textEmailAddress" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Privacy">
+        <SwitchPreferenceCompat
+            android:key="analytics"
+            android:title="Analytics"
+            android:summary="Help improve the app by sending usage data"
+            android:defaultValue="false" />
+
+        <SwitchPreferenceCompat
+            android:key="crash_reports"
+            android:title="Crash reports"
+            android:summary="Automatically send crash reports"
+            android:defaultValue="true" />
+    </PreferenceCategory>
+
+</PreferenceScreen>
+

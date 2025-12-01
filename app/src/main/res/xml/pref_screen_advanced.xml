@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory android:title="Developer">
+        <SwitchPreferenceCompat
+            android:key="dev_mode"
+            android:title="Developer mode"
+            android:summary="Enable developer options"
+            android:defaultValue="false" />
+
+        <SwitchPreferenceCompat
+            android:key="debug_logging"
+            android:title="Debug logging"
+            android:summary="Enable verbose logging"
+            android:defaultValue="false"
+            android:dependency="dev_mode" />
+
+        <Preference
+            android:key="clear_cache"
+            android:title="Clear cache"
+            android:summary="Clear local library cache"
+            android:icon="@android:drawable/ic_menu_delete" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Data">
+        <Preference
+            android:key="export_settings"
+            android:title="Export settings"
+            android:summary="Export all settings to file"
+            android:icon="@android:drawable/ic_menu_save" />
+
+        <Preference
+            android:key="import_settings"
+            android:title="Import settings"
+            android:summary="Import settings from file"
+            android:icon="@android:drawable/ic_menu_upload" />
+
+        <Preference
+            android:key="reset_settings"
+            android:title="Reset to defaults"
+            android:summary="Reset all settings to default values"
+            android:icon="@android:drawable/ic_menu_revert" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Performance">
+        <SeekBarPreference
+            android:key="cache_size"
+            android:title="Cache size"
+            android:summary="Maximum cache size in MB"
+            android:max="500"
+            android:defaultValue="100"
+            app:min="10" />
+
+        <ListPreference
+            android:key="image_quality"
+            android:title="Image quality"
+            android:summary="Select image loading quality"
+            android:entries="@array/image_quality_entries"
+            android:entryValues="@array/image_quality_values"
+            android:defaultValue="high" />
+    </PreferenceCategory>
+
+</PreferenceScreen>
+
