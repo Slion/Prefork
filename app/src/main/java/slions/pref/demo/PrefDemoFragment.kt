@@ -21,10 +21,6 @@ class PrefDemoFragment : PreferenceFragmentCompat() {
         setPreferencesFromResource(xmlRes, rootKey)
 
         // Set up navigation to other preference screens
-        findPreference<Preference>("notifications")?.setOnPreferenceClickListener {
-            navigateToScreen(R.xml.pref_screen_notifications, "Notifications")
-            true
-        }
 
         findPreference<Preference>("advanced")?.setOnPreferenceClickListener {
             navigateToScreen(R.xml.pref_screen_advanced, "Advanced")
