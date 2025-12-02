@@ -2,6 +2,21 @@ A fork of AndroidX Preference library
 
 ## Features
 
+### XML Namespace Convention
+
+In preference XML files, you can use a shorter namespace prefix like `a` instead of `android` to reduce verbosity:
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:a="http://schemas.android.com/apk/res/android">
+    <Preference
+        a:key="my_preference"
+        a:title="My Preference" />
+</PreferenceScreen>
+```
+
+This is equivalent to using `android:` but more concise. Both examples in this documentation use the `a` prefix for brevity.
+
 ### Fragment Navigation with `android:fragment`
 
 The `android:fragment` attribute enables declarative navigation to other preference screens without writing any Java/Kotlin code. When a preference with this attribute is clicked, the AndroidX Preference library automatically handles the fragment transaction.
@@ -10,10 +25,10 @@ The `android:fragment` attribute enables declarative navigation to other prefere
 
 ```xml
 <Preference
-    android:key="notifications"
-    android:title="Notifications"
-    android:summary="Notification settings"
-    android:fragment="slions.pref.demo.NotificationsFragment" />
+    a:key="notifications"
+    a:title="Notifications"
+    a:summary="Notification settings"
+    a:fragment="slions.pref.demo.NotificationsFragment" />
 ```
 
 When the user taps this preference, the library will:
@@ -39,13 +54,13 @@ In your preference XML file:
 
 ```xml
 <Preference
-    android:key="notifications"
-    android:title="Notifications"
-    android:summary="Notification settings"
-    android:fragment="slions.pref.demo.NotificationsFragment">
+    a:key="notifications"
+    a:title="Notifications"
+    a:summary="Notification settings"
+    a:fragment="slions.pref.demo.NotificationsFragment">
     <extra
-        android:name="message"
-        android:value="Welcome to Notification Settings! 🔔" />
+        a:name="message"
+        a:value="Welcome to Notification Settings! 🔔" />
 </Preference>
 ```
 
@@ -74,12 +89,36 @@ class NotificationsFragment : PreferenceFragmentCompat() {
 You can pass multiple extras to a fragment:
 
 ```xml
-<Preference android:fragment="com.example.MyFragment">
-    <extra android:name="message" android:value="Hello World!" />
-    <extra android:name="userId" android:value="12345" />
-    <extra android:name="isAdmin" android:value="true" />
+<Preference a:fragment="com.example.MyFragment">
+    <extra a:name="message" a:value="Hello World!" />
+    <extra a:name="userId" a:value="12345" />
+    <extra a:name="isAdmin" a:value="true" />
 </Preference>
 ```
+
+#### Using String Resources
+
+You can pass string resource IDs instead of hardcoded strings for better localization:
+
+**In strings.xml:**
+```xml
+<string name="welcome_notifications">Welcome to Notification Settings! 🔔</string>
+<string name="welcome_advanced">Advanced settings for power users ⚙️</string>
+```
+
+**In your preference XML:**
+```xml
+<Preference
+    a:key="notifications"
+    a:title="Notifications"
+    a:fragment="slions.pref.demo.NotificationsFragment">
+    <extra
+        a:name="message"
+        a:value="@string/welcome_notifications" />
+</Preference>
+```
+
+The fragment receives the resolved string automatically - no additional code needed!
 
 #### How It Works
 

@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">Preference Demo</string>
 
+    <!-- Welcome messages -->
+    <string name="welcome_notifications">Welcome to Notification Settings! 🔔</string>
+    <string name="welcome_advanced">Advanced settings for power users ⚙️</string>
+
     <!-- Theme arrays -->
     <string-array name="theme_entries">
         <item>Light</item>

@@ -20,12 +20,6 @@ class PrefDemoFragment : PreferenceFragmentCompat() {
         val xmlRes = arguments?.getInt(ARG_XML_RES) ?: R.xml.pref_screen_root
         setPreferencesFromResource(xmlRes, rootKey)
 
-        // Set up navigation to other preference screens
-
-        findPreference<Preference>("advanced")?.setOnPreferenceClickListener {
-            navigateToScreen(R.xml.pref_screen_advanced, "Advanced")
-            true
-        }
 
         // Set up click handlers for action preferences
         findPreference<Preference>("clear_cache")?.setOnPreferenceClickListener {
@@ -47,13 +41,6 @@ class PrefDemoFragment : PreferenceFragmentCompat() {
             Toast.makeText(requireContext(), "Settings reset to defaults!", Toast.LENGTH_SHORT).show()
             true
         }
-    }
-
-    private fun navigateToScreen(xmlRes: Int, title: String) {
-        parentFragmentManager.beginTransaction()
-            .replace(R.id.main, newInstance(xmlRes))
-            .addToBackStack(title)
-            .commit()
     }
 }
 

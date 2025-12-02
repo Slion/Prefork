@@ -16,14 +16,19 @@
             a:fragment="slions.pref.demo.NotificationsFragment">
             <extra
                 a:name="message"
-                a:value="Welcome to Notification Settings! 🔔" />
+                a:value="@string/welcome_notifications" />
         </Preference>
 
         <Preference
             a:key="advanced"
             a:title="Advanced"
             a:summary="Advanced settings and tools"
-            a:icon="@android:drawable/ic_menu_preferences" />
+            a:icon="@android:drawable/ic_menu_preferences"
+            a:fragment="slions.pref.demo.AdvancedFragment">
+            <extra
+                a:name="message"
+                a:value="@string/welcome_advanced" />
+        </Preference>
 
         <ListPreference
             a:key="theme"
