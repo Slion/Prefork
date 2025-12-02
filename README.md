@@ -120,6 +120,84 @@ You can pass string resource IDs instead of hardcoded strings for better localiz
 
 The fragment receives the resolved string automatically - no additional code needed!
 
+#### Using XML Resource IDs
+
+You can pass XML resource references using `@xml/` syntax. **Important:** The `@xml/` reference gets resolved to a **resource path string** (like `res/xml-v22/pref_screen_advanced.xml`), not an integer ID. You need to extract the resource name and resolve it at runtime:
+
+```xml
+<Preference
+    a:key="advanced"
+    a:title="Advanced"
+    a:fragment="slions.pref.demo.AdvancedFragment">
+    <extra
+        a:name="message"
+        a:value="@string/welcome_advanced" />
+    <extra
+        a:name="screen"
+        a:value="@xml/pref_screen_advanced" />
+</Preference>
+```
+
+**In your fragment:**
+```kotlin
+class AdvancedFragment : PreferenceFragmentCompat() {
+    companion object {
+        private const val ARG_SCREEN = "screen"
+    }
+
+    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+        // Get screen from extras (comes as string path from @xml/ reference)
+        val screenResId = arguments?.getString(ARG_SCREEN)?.let { screenValue ->
+            resolveScreenResource(screenValue)
+        } ?: R.xml.pref_screen_error
+        
+        setPreferencesFromResource(screenResId, rootKey)
+    }
+    
+    @SuppressLint("DiscouragedApi")
+    private fun resolveScreenResource(resourceValue: String): Int {
+        // Handle different formats:
+        // 1. "res/xml-v22/pref_screen_advanced.xml" (resolved from @xml/)
+        // 2. "pref_screen_advanced" (plain resource name)
+        
+        val resourceName = when {
+            // Extract name from resolved path
+            resourceValue.startsWith("res/xml") -> {
+                resourceValue.substringAfterLast("/").removeSuffix(".xml")
+            }
+            // Use as-is if plain name
+            else -> resourceValue
+        }
+
+        // Get the resource ID using reflection
+        val resId = resources.getIdentifier(resourceName, "xml", requireContext().packageName)
+        
+        return if (resId != 0) {
+            resId
+        } else {
+            Toast.makeText(requireContext(), 
+                "Screen not found: $resourceValue", 
+                Toast.LENGTH_LONG).show()
+            R.xml.pref_screen_error
+        }
+    }
+}
+```
+
+**Error screen example (pref_screen_error.xml):**
+```xml
+<PreferenceScreen xmlns:a="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory a:title="Error">
+        <Preference
+            a:title="No Screen Specified"
+            a:summary="This fragment requires a screen resource ID."
+            a:enabled="false" />
+    </PreferenceCategory>
+</PreferenceScreen>
+```
+
+This allows you to reuse the same fragment class with different preference screens, with a helpful error message when no screen is specified!
+
 #### How It Works
 
 1. The AndroidX Preference library automatically bundles all `<extra>` tags into the fragment's arguments Bundle

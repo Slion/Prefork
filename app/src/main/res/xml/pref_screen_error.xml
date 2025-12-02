@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:a="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory a:title="Error">
+        <Preference
+            a:key="error_message"
+            a:title="No Screen Specified"
+            a:summary="This fragment requires a screen resource ID to be passed as an extra parameter. Please specify the 'screen' extra with an XML resource reference."
+            a:icon="@android:drawable/ic_dialog_alert"
+            a:enabled="false" />
+    </PreferenceCategory>
+
+</PreferenceScreen>
+
