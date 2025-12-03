@@ -1,5 +1,7 @@
 # AndroidX Preference Fork
 
+[![Build](https://github.com/Slion/AndroidX.Preference/actions/workflows/build.yml/badge.svg)](https://github.com/Slion/AndroidX.Preference/actions/workflows/build.yml)
+
 A fork of the AndroidX Preference library for testing and debugging purposes.
 It includes a demo application showcasing various preference features and usage patterns.
 
