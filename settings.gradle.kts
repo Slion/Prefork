@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Prefork"
+rootProject.name = "AndroidX.Preference"
 include(":app")
 include(":lib")

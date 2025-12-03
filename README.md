@@ -1,4 +1,14 @@
-A fork of AndroidX Preference library
+# AndroidX Preference Fork
+
+A fork of the AndroidX Preference library for testing and debugging purposes.
+It includes a demo application showcasing various preference features and usage patterns.
+
+## Introduction
+
+- **Purpose**: Testing and debugging AndroidX Preference v1.2.1
+- **Source**: Based on [AndroidX Preference source code](https://android.googlesource.com/platform/frameworks/support/+/refs/heads/androidx-main/preference/preference/) at commit `e0c0cab4fa744ed179ac45be46196a75765ae0e1`
+- **Repository**: https://github.com/Slion/AndroidX.Preference
+- **Note**: This is not a modified version of the library - it's the original source used for testing with a companion demo app
 
 ## Features
 
@@ -211,6 +221,8 @@ This approach provides:
 
 ## References
 
+- [Material Design Preference Library](https://github.com/Slion/Preference) - Material Design extension for AndroidX Preference
+- [AndroidX Preference Source Code](https://android.googlesource.com/platform/frameworks/support/+/refs/heads/androidx-main/preference/preference/)
 - [AndroidX Preference Library - Official Documentation](https://developer.android.com/jetpack/androidx/releases/preference)
 - [Settings Guide - Android Developers](https://developer.android.com/develop/ui/views/components/settings)
 
